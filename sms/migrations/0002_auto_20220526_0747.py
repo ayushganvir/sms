@@ -16,22 +16,21 @@ def book_list():
             rows.append(row)
     return rows[1:]
 
+
 def add_book_details(apps, schema_editor):
-    Book = apps.get_model('sms', 'Book')
+    Book = apps.get_model("sms", "Book")
     for title, author, publish_date, num in book_list():
         if publish_date:
             publish_date = datetime.datetime.strptime(publish_date, "%d/%m/%Y").date()
         else:
             publish_date = None
         Book(
-            title=title,
-            author=author,
-            publish_date=publish_date,
-            number_of_pages=num
+            title=title, author=author, publish_date=publish_date, number_of_pages=num
         ).save()
 
+
 def delete_book_details(apps, schema_editor):
-    Book = apps.get_model('sms', 'Book')
+    Book = apps.get_model("sms", "Book")
     books = Book.objects.all()
     books.delete()
 
@@ -39,9 +38,7 @@ def delete_book_details(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('sms', '0001_initial'),
+        ("sms", "0001_initial"),
     ]
 
-    operations = [
-        migrations.RunPython(add_book_details, delete_book_details)
-    ]
+    operations = [migrations.RunPython(add_book_details, delete_book_details)]

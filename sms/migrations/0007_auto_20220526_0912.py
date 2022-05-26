@@ -12,37 +12,38 @@ def student_list():
             rows.append(row)
     return rows
 
+
 def add_student_details(apps, schema_editor):
-    Student = apps.get_model('sms', 'Student')
-    School = apps.get_model('sms', 'School')
-    Book = apps.get_model('sms', 'Book')
+    Student = apps.get_model("sms", "Student")
+    School = apps.get_model("sms", "School")
+    Book = apps.get_model("sms", "Book")
     for id, first_name, last_name, email, gender, school, book in student_list():
-        print('>>>', book)
+        print(">>>", book)
         s = Student(
-            first_name = first_name,
-            last_name = last_name,
-            email = email,
-            gender = gender,)
+            first_name=first_name,
+            last_name=last_name,
+            email=email,
+            gender=gender,
+        )
         s.save()
         if school:
             s.school = School.objects.get(school=school)
-        if book:  
+        if book:
             b = Book.objects.get(title=book)
             s.books.add(b)
         s.save()
 
 
 def delete_student_details(apps, schema_editor):
-    Student = apps.get_model('sms', 'Student')
+    Student = apps.get_model("sms", "Student")
     students = Student.objects.all()
     students.delete()
+
 
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('sms', '0006_alter_student_books'),
+        ("sms", "0006_alter_student_books"),
     ]
 
-    operations = [
-        migrations.RunPython(add_student_details, delete_student_details)
-    ]
+    operations = [migrations.RunPython(add_student_details, delete_student_details)]

@@ -7,30 +7,45 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Book',
+            name="Book",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(default='', max_length=100)),
-                ('author', models.CharField(blank=True, max_length=80)),
-                ('publish_date', models.DateField(blank=True, null=True)),
-                ('number_of_pages', models.IntegerField(default=100)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(default="", max_length=100)),
+                ("author", models.CharField(blank=True, max_length=80)),
+                ("publish_date", models.DateField(blank=True, null=True)),
+                ("number_of_pages", models.IntegerField(default=100)),
             ],
         ),
         migrations.CreateModel(
-            name='School',
+            name="School",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('region_id', models.IntegerField(default=100)),
-                ('school', models.CharField(max_length=50)),
-                ('email', models.EmailField(max_length=200)),
-                ('principal', models.CharField(max_length=30)),
-                ('phone_no', models.CharField(max_length=8)),
-                ('address', models.CharField(max_length=50)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("region_id", models.IntegerField(default=100)),
+                ("school", models.CharField(max_length=50)),
+                ("email", models.EmailField(max_length=200)),
+                ("principal", models.CharField(max_length=30)),
+                ("phone_no", models.CharField(max_length=8)),
+                ("address", models.CharField(max_length=50)),
             ],
         ),
     ]

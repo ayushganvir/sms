@@ -7,20 +7,28 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('sms', '0004_auto_20220526_0903'),
+        ("sms", "0004_auto_20220526_0903"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Student',
+            name="Student",
             fields=[
-                ('id', models.AutoField(primary_key=True, serialize=False)),
-                ('first_name', models.CharField(blank=True, max_length=50)),
-                ('last_name', models.CharField(blank=True, max_length=50)),
-                ('email', models.EmailField(default='', max_length=250)),
-                ('gender', models.CharField(blank=True, max_length=20)),
-                ('books', models.ManyToManyField(blank=True, null=True, to='sms.book')),
-                ('school', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='sms.school')),
+                ("id", models.AutoField(primary_key=True, serialize=False)),
+                ("first_name", models.CharField(blank=True, max_length=50)),
+                ("last_name", models.CharField(blank=True, max_length=50)),
+                ("email", models.EmailField(default="", max_length=250)),
+                ("gender", models.CharField(blank=True, max_length=20)),
+                ("books", models.ManyToManyField(blank=True, null=True, to="sms.book")),
+                (
+                    "school",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="sms.school",
+                    ),
+                ),
             ],
         ),
     ]
