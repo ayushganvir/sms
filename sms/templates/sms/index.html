@@ -1,0 +1,31 @@
+{% extends "sms/base.html" %}
+
+{% block content %}
+
+<form action=" {% url 'index' %}" method="get">
+    <p>
+      {{ form.as_table }}
+    </p>
+  <input type="submit" value="Search">
+  </form>
+<div>
+<a href="{% url 'create_student' %}">Create A Student</a>
+</div>
+  <div>
+
+      {% if students %}
+        <ul>
+            {% for s in students %}
+            <li>
+                <a href="{% url 'student_detail' s.id %}">{{ s.first_name }} {{ s.last_name }} </a>
+            </li>
+            {% endfor %}
+        </ul>
+      {% else %}
+        {% if request.GET %}
+            No students found
+        {% endif %}
+      {% endif %}
+  </div>
+
+{% endblock %}

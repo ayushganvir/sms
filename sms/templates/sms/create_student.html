@@ -1,0 +1,14 @@
+{% extends "sms/base.html" %}
+
+{% block content %}
+
+
+<form action=" {% url 'create_student' %}" method="post">
+    {% csrf_token %}
+    {{form.as_p }}
+    <input type="submit" value=Submit">
+</form>
+<div><a href="{% url 'create_book' %}">Book not here? Click to create.</a></div>
+<div><a href="{% url 'create_school' %}">School not here? Click to create.</a></div>
+
+{% endblock %}

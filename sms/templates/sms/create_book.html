@@ -1,0 +1,12 @@
+{% extends "sms/base.html" %}
+
+{% block content %}
+
+
+<form action=" {% url 'create_book' %}" method="post">
+    {% csrf_token %}
+    {{form.as_p }}
+    <input type="submit" value=Submit">
+</form>
+<h3>please enter date in dd/mm/yyyy format</h3>
+{% endblock %}

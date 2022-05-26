@@ -1,0 +1,30 @@
+{% extends "sms/base.html" %}
+
+{% block content %}
+<h1>Student Details</h1>
+<a href="{% url 'index' %}">Back To Search</a>
+
+<div class="card">
+  <h2>Student</h2>
+    <h3>Student ID : {{ student.id }}</h3>
+    <h3>Name :{{ student.first_name }} {{ student.last_name}}</h3>
+    <h3>Email : {{ student.email }}</h3>
+    <h3>Gender : {{ student.gender }}</h3>
+ </div>
+ <div>
+   <h2> School </h2>
+  <h3>School : {{ student.school }}</h3>
+  <h3>School : {{ student.school.email }}</h3>
+  <h3>School : {{ student.school.principal }}</h3>
+  <h3>School : {{ student.school.phone_no }}</h3>
+  <h3>School : {{ student.school.address }}</h3>
+
+ </div>
+ <h2> About the Books</h2>
+<ul>
+  {% for s in student.books.all %}
+      <li>{{ s.title }}, written by {{ s.author }}, published on {{ s.publish_date }}, which has {{ s.number_of_pages }} pages in it.</li>
+  {% endfor %}
+</ul>
+{% endblock %}
+
